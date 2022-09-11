@@ -1,0 +1,2 @@
+delete[] leftArr;
+        delete[] rightArr;
