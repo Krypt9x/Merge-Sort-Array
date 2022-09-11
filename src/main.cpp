@@ -1,42 +1,52 @@
 #include <iostream>
 
-class MergeSort{
-    public:
-    void merge(int Arr[], int begin, int mid, int end){
+class MergeSort
+{
+public:
+    void merge(int Arr[], int begin, int mid, int end)
+    {
         int rightLen = mid - begin + 1;
         int leftLen = end - mid;
 
         int *rightArr = new int[rightLen];
         int *leftArr = new int[leftLen];
 
-        for(int i = 0; i < rightLen; i++){
+        for (int i = 0; i < rightLen; i++)
+        {
             rightArr[i] = Arr[begin + i];
         }
-        for(int j = 0; j < leftLen; j++){
+        for (int j = 0; j < leftLen; j++)
+        {
             leftArr[j] = Arr[mid + 1 + j];
         }
 
         int rIndex = 0;
         int lIndex = 0;
         int ArrIndex = begin;
-        while(rIndex < rightLen && lIndex < leftLen){
-            if(rightArr[rIndex] <= leftArr[lIndex]){
+        while (rIndex < rightLen && lIndex < leftLen)
+        {
+            if (rightArr[rIndex] <= leftArr[lIndex])
+            {
                 Arr[ArrIndex] = rightArr[rIndex];
                 rIndex++;
-            }else{
+            }
+            else
+            {
                 Arr[ArrIndex] = leftArr[lIndex];
                 lIndex++;
             }
             ArrIndex++;
         }
 
-        while(rIndex < rightLen){
+        while (rIndex < rightLen)
+        {
             Arr[ArrIndex] = rightArr[rIndex];
             ArrIndex++;
             rIndex++;
         }
 
-        while(lIndex < leftLen){
+        while (lIndex < leftLen)
+        {
             Arr[ArrIndex] = leftArr[lIndex];
             ArrIndex++;
             lIndex++;
@@ -46,8 +56,10 @@ class MergeSort{
         delete[] rightArr;
     }
 
-    void mergeSort(int Arr[], int l, int r){
-        if(l < r){
+    void mergeSort(int Arr[], int l, int r)
+    {
+        if (l < r)
+        {
             int m = l + (r - l) / 2;
             mergeSort(Arr, l, m);
             mergeSort(Arr, m + 1, r);
@@ -55,21 +67,22 @@ class MergeSort{
         }
     }
 
-   
-    void displayArr(int Arr[], int len){
-        for(int i = 0; i < len; i++){
-            std::cout << Arr[i] << " " ;
+    void displayArr(int Arr[], int len)
+    {
+        for (int i = 0; i < len; i++)
+        {
+            std::cout << Arr[i] << " ";
         }
     }
-
 };
 
-int main(){
+int main()
+{
     MergeSort mergeSortObj;
     int Arr[] = {-2, 3, -90, 39, 0, 0, 1};
     int len = sizeof(Arr) / sizeof(Arr[0]);
 
-    mergeSortObj.mergeSort(Arr, 0, len-1);
+    mergeSortObj.mergeSort(Arr, 0, len - 1);
     mergeSortObj.displayArr(Arr, len);
     return 0;
 }
